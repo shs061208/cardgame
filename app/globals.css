@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d0d0d;
+  --foreground: #ffffff;
+  --primary: #ff448c;
+  --secondary: #00f2ff;
+  --accent: #ffee00;
+  --card-bg: #1a1a1a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card: var(--card-bg);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
+
+@layer utilities {
+  .retro-box {
+    background: #252528;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  .retro-border {
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  .diagonal-pattern {
+    background-color: #1a1a1a;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+  }
+
+  .text-neon-pink {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(255, 68, 140, 0.5);
+  }
+
+  .text-neon-cyan {
+    color: var(--secondary);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
