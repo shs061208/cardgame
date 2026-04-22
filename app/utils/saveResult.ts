@@ -5,11 +5,6 @@ export async function saveGameResult(name: string, finishtime: number) {
    */
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUZ4EZrgVXBiHhS6JnWXuImpcOIU9jl3TrVLgHEk-yeB-DqeRGlqeTAenwDxDEkbDv/exec";
 
-  if (!SCRIPT_URL || SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
-    console.warn("데이터 저장을 위한 Google Apps Script URL이 설정되지 않았습니다.");
-    return;
-  }
-
   try {
     // Google Apps Script는 Redirect를 사용하기 때문에 no-cors 또는 특별한 처리가 필요할 수 있습니다.
     // 여기서는 가장 간단한 형태의 POST 요청을 보냅니다.
